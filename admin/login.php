@@ -15,13 +15,13 @@ $logged=$auth->login($email,$pwd);
 
 if($logged['error']==false)
 {
-    header('location:dashboard');
+    header('location:dashboard/');
 }
 else
 {
     session_start();
     $_SESSION['error']=$logged['message'];
-    header('location:./');
+    header('location:../');
 }
 
 

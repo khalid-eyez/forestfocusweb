@@ -1,3 +1,4 @@
+<?php  session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -34,7 +35,7 @@
       
                     <div class="ibox-content" style="width:36%;margin-top: 15%;">
                     <?php
-               session_start();
+              
                  if(isset($_SESSION['error']) && $_SESSION['error']!="")
                  {
                  ?>
@@ -82,18 +83,18 @@
 
 
     <!-- Mainly scripts -->
-    <script src="../js/jquery-3.1.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/js/jquery-3.1.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="../js/inspinia.js"></script>
-    <script src="../js/plugins/pace/pace.min.js"></script>
+    <script src="assets/js/inspinia.js"></script>
+    <script src="assets/js/plugins/pace/pace.min.js"></script>
 
     <!-- iCheck -->
-    <script src="../js/plugins/iCheck/icheck.min.js"></script>
+    <script src="assets/js/plugins/iCheck/icheck.min.js"></script>
         <script>
             $(document).ready(function () {
                 $('.i-checks').iCheck({

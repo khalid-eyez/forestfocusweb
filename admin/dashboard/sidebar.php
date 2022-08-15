@@ -86,7 +86,7 @@
                           $resultproj=$conn->query($queryproj);
                           $moduleproj=$resultproj->fetchAll(PDO::FETCH_ASSOC);
                           $moduleID2=urldecode(base64_encode($moduleproj[0]['modID']));
-                          print $moduleproj[0]['modID'];
+                          //print $moduleproj[0]['modID'];
                           $query3="select * from sections where moduleID=".$moduleproj[0]['modID'].";";
             
                           $result3=$conn->query($query3);

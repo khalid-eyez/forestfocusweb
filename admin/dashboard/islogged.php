@@ -13,7 +13,7 @@ $config = new PHPAuthConfig($dbh);
 $auth = new PHPAuth($dbh, $config);
 
 if (!$auth->isLogged()) {
- header("location:../index.php");
+ header("location:../");
 }
 
 ?>

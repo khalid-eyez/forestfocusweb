@@ -10,7 +10,7 @@
     {
         session_start();
         $_SESSION['message']="session deleted successfully";
-        header("location:./");
+        header("location:dashboard.php");
     }
 
    
