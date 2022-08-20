@@ -7,39 +7,37 @@
         </div>
         <div class="row m-b-lg justify-content-center">
             <div class="col-lg-12 text-center">
-                <img src="/logo/logo.png" width="90px" height="90px"/>
-                <address style="font-size:30px!important">
-                    <strong><span class="navy">Forest Focus.</span></strong><br/>
-                    P.O.BOX 384, Manundu street,<br/>
-                    Korogwe,Tanga tanzania<br/>
-                    Phone: +255747381871 </br>
-                    Email: info@forestfocus.co.tz
-                </address>
+                <img src="/logo/logo.png" width="70px" height="70px"/>
+        
             </div>
      
         </div>
         <div class="row">
+        <?php
+                        include_once("admin/Dbconnect.php");
+
+                        $conn=(new Admin\Dbconnect)->connect();
+                        $sql="select * from organisation;";
+                        $result=$conn->query($sql);
+                        $socials=$result->fetchAll(PDO::FETCH_ASSOC)[0];
+                       
+                 ?>
             <div class="col-lg-12 text-center">
-                <p class="">
-                    Or follow us on social platform
-                </p>
-                <ul class="list-inline ">
-                    <li class="list-inline-item"><a href="https://twitter.com/focus_forest/"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item"><a href="https://www.facebook.com/Forestroot/"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item"><a href="https://www.linkedin.com/company/forest-focusppl/posts/?feedView=all&viewAsMember=true"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                    <li class="list-inline-item"><a href="https://www.youtube.com/channel/UC0gRQUy51fDdi5H40hO8KhQ"><i class="fa fa-youtube"></i></a>
-                    </li>
-                    <li class="list-inline-item"><a href="https://www.instagram.com/forest_focusppl/"><i class="fa fa-instagram"></i></a>
-                    </li>
+             
+                <ul class="list-inline " style="list-style:none;font-size:25px;color:#10ff00!important">
+          
+
+                <li class="list-inline-item" ><a href="<?=$socials['facebook']?>"><i class="fa fa-facebook" style="color:green!important"></i> </a></li>
+                <li class="list-inline-item"><a href="<?=$socials['twitter']?>"><i class="fa fa-twitter" style="color:green!important"></i> </a></li>
+                <li class="list-inline-item"><a href="<?=$socials['instagram']?>"><i class="fa fa-instagram" style="color:green!important"></i> </a></li>
+                <li class="list-inline-item"><a href="<?=$socials['linkedin']?>"><i class="fa fa-linkedin" style="color:green!important"></i> </a></li>
+                <li class="list-inline-item"><a href="<?=$socials['youtube']?>"><i class="fa fa-youtube" style="color:green!important"></i> </a></li>
                 </ul>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 text-center m-t-lg m-b-lg text-lg" >
-                <p style="font-size:20px!important"> Copyright <strong>&copy; 2022 Forest Focus</strong></p>
+            <div class="col-lg-12 text-center m-t-lg m-b-lg " >
+                <p> Copyright <strong>&copy; 2022 Forest Focus</strong> &nbsp&nbsp&nbsp <i class="fa fa-envelope"></i> <?=$socials['email']?> &nbsp&nbsp&nbsp <i class="fa fa-phone"></i> <?=$socials['phone']?> &nbsp&nbsp&nbsp <?=$socials['address']?> </p>
             </div>
         </div>
     </div>

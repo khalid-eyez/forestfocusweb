@@ -9,8 +9,8 @@
     if($statement->execute())
     {
         session_start();
-        $_SESSION['message']="session deleted successfully";
-        header("location:dashboard.php");
+        $_SESSION['message']="section deleted successfully";
+        header("location:newsection.php");
     }
 
    

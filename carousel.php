@@ -72,7 +72,7 @@ foreach($images as $index=>$image)
           <div class="carousel-item ">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>
+                    <h1 style="width:70%;overflow-wrap: break-word;">
                     <?=$image['caption']?>
                         </h1>
                     <p></p>

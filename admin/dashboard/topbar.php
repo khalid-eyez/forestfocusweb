@@ -2,7 +2,8 @@
 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header text-center text-lg pt-3 pl-5 d-flex justify-content-center">
           <?php
-           
+           ini_set('post_max_size', '250M');
+           ini_set('upload_max_filesize', '50M');
            if(isset($_SESSION['error']) && $_SESSION['error']!="")
            {
             ?>

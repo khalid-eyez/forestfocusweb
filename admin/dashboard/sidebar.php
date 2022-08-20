@@ -1,5 +1,9 @@
-<?php include_once("islogged.php"); ?>
-<?php session_start(); ?>
+<?php 
+include_once("islogged.php"); 
+ini_set('post_max_size', '250M');
+ini_set('upload_max_filesize', '50M');
+?>
+
 <nav class="navbar-default navbar-static-side"  role="navigation">
         <div class="sidebar-collapse" >
             <ul class="nav metismenu" id="side-menu" >
@@ -18,9 +22,9 @@
         
             
                 <li class="">
-                    <a href="#"><i class="fa fa-building-o"></i> <span class="nav-label">Organisation</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Organisation</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="active"><a href="organisation.php">Details</a></li>
+                        <li class="active"><a href="organisation.php">Organisation Details</a></li>
                        
                     </ul>
                 </li>
@@ -41,7 +45,7 @@
 
 
                 <li class="">
-                    <a href="#"><i class="fas fa-brain"></i> <span class="nav-label">Philosophy | Activities</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Philosophy</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                   
                           <?php
@@ -57,7 +61,7 @@
                           $result2=$conn->query($query2);
                           $sections=$result2->fetchAll(PDO::FETCH_ASSOC);
                           ?>
-                            <li><a href="updateModule.php?module=<?=$moduleID?>">Update Module</a></li>
+                            <li><a href="updateModule.php?module=<?=$moduleID?>">Module Carousel</a></li>
                           <?php
                          foreach($sections as $index=>$section)
                          {
@@ -78,7 +82,7 @@
                 </li>
 
                 <li class="">
-                    <a href="#"><i class="fas fa-project-diagram"></i> <span class="nav-label">Projects</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Projects</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                   
                           <?php
@@ -93,7 +97,7 @@
                           $sectionsproj=$result3->fetchAll(PDO::FETCH_ASSOC);
                           
                           ?>
-                            <li><a href="updateModule.php?module=<?=$moduleID2?>">Update Module</a></li>
+                            <li><a href="updateModule.php?module=<?=$moduleID2?>">Module Carousel</a></li>
                           <?php
                          foreach($sectionsproj as $index=>$section2)
                          {
@@ -125,13 +129,13 @@
                           $result=$conn->query($query);
                           $module=$result->fetchAll(PDO::FETCH_ASSOC);
                           $moduleID=urldecode(base64_encode($module[0]['modID']));
-                          print $module[0]['modID'];
+                          //print $module[0]['modID'];
                           $query2="select * from sections where moduleID=".$module[0]['modID'].";";
             
                           $result2=$conn->query($query2);
                           $sections=$result2->fetchAll(PDO::FETCH_ASSOC);
                           ?>
-                            <li><a href="updateModule.php?module=<?=$moduleID?>">Update Module</a></li>
+                            <li><a href="updateModule.php?module=<?=$moduleID?>">Module Carousel</a></li>
                           <?php
                          foreach($sections as $index=>$section)
                          {
@@ -151,19 +155,37 @@
                     </ul>
                 </li>
 
-
                 <li class="">
-                    <a href="#"><i class="fas fa-blog"></i> <span class="nav-label">Blog</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Blog</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li class="active"><a href="form_basic.html">Home</a></li>
-                        <li><a href="form_advanced.html">Advanced Plugins</a></li>
-                        <li><a href="form_wizard.html">Wizard</a></li>
-                        <li><a href="form_file_upload.html">File Upload</a></li>
-                        <li><a href="form_editors.html">Text Editor</a></li>
-                        <li><a href="form_autocomplete.html">Autocomplete</a></li>
-                        <li><a href="form_markdown.html">Markdown</a></li>
+                   
+                          <?php
+                          $query3="select * from blog;";
+            
+                          $result3=$conn->query($query3);
+                          $blogposts=$result3->fetchAll(PDO::FETCH_ASSOC);
+                          
+                          ?>
+                          <li><a href="updateblog.php">Blog Carousel</a></li>
+                          <?php
+                         foreach($blogposts as $index=>$blogpost)
+                         {
+                            $title=$blogpost['title'];
+                            $sendblogpost=urlencode(base64_encode(serialize($blogpost)));
+                            //$sectionID=urlencode(base64_encode($section['sectionID']));
+                            ?>
+                              <li><a href="updatepost.php?post=<?=$sendblogpost?>"><?=$title?></a></li>
+                            <?php
+                         }
+                          //select all existing sections
+                             //$conn=mysqli_connect()
+                          ?>
+                        <!--<li class="active"><a href="form_basic.html">Home</a></li>-->
+                        <li><a href="newpost.php">New Post</a></li>
+                      
                     </ul>
                 </li>
+
 
                 <li class="">
                     <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>

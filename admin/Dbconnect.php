@@ -3,9 +3,9 @@ namespace Admin;
 class Dbconnect
 {
 
-  public $dbname="forestfo_forestfocusnew";
-  public $username='forestfo_admin';
-  public $password='forestDB@2022';
+  public $dbname="forestfocusdb";
+  public $username='root';
+  public $password='';
 
 
   public function connect()

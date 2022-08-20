@@ -40,34 +40,18 @@
   $sections=$result2->fetchAll(PDO::FETCH_ASSOC);
   //print_r($sections);return true;
   ?>
-<div id="inSlider" class="carousel slide" data-ride="carousel" style="margin-top:146px" >
+<?php
+include_once("aboutcarousel.php");
 
-    <div class="carousel-inner" role="listbox">
-   
-        <div class="carousel-item active">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>
-                      About Us
-                    </h1>
-                </div>
-            </div>
-            <!-- Set background for slide in css -->
-         
-            <div class="header-back one" style="background: url('../imgs/<?=$module["moduleimage"]?>'),linear-gradient(rgba(0,0,0,0.3),rgba(50,100,0,0.2)) 50% 0 no-repeat;background-size:cover; background-blend-mode: overlay;background-position: bottom;"></div>
-
-        </div>
-    
-    
-    </div>
-
-</div>
+?>
 
 
 <?php
 
 foreach($sections as $index=>$section)
 {
+    if(strtolower($section['sectionTitle'])!="mission" && strtolower($section['sectionTitle'])!="vision")
+    {
 
     ?>
        <section  class="container features">
@@ -115,6 +99,61 @@ foreach($sections as $index=>$section)
 
 
     <?php
+    }
+    else
+    {
+        ?>
+       <section  class="container features">
+    <div class="row mt-3">
+        <div class="col-sm-6">
+            <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>
+                <?=$section['sectionTitle']?>
+            </h1>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12  text-lg    text-justify mt-3" style="font-size: 15px;">
+
+                 <?=$section['description']?>
+       
+        </div>
+    </div>
+    </div>
+    <div class="col-sm-6">
+    <div class="row mt-1">
+        <?php
+          //section images
+
+          $query3="select * from sectionimages where sectionID=".$section['sectionID']." order by imageID desc limit 2;";
+          $result3=$conn->query($query3);
+          $sectionsimages=$result3->fetchAll(PDO::FETCH_ASSOC);
+
+
+          foreach($sectionsimages as $index=>$sectionsimage)
+          {
+            ?>
+
+                <div class="col-sm-6 wow zoomIn float-right">
+                    
+                    <img src="../imgs/<?=$sectionsimage['image']?>" alt="forest focus" style="height:90%;width:100%" class="img-fluid img-thumbnail float-right">
+                </div>
+            <?php
+          }
+
+        ?>
+   
+ 
+    </div>
+        </div></div>
+  
+</section>
+
+
+
+    <?php 
+    }
 }
 
 ?>

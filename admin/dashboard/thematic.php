@@ -1,3 +1,5 @@
+
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -30,9 +32,9 @@
     include_once("../Dbconnect.php");
 
     $conn=(new Admin\Dbconnect)->connect();
-    $sql="select * from sections;";
-    $result=$conn->query($sql);
-    $sections=$result->fetchAll(PDO::FETCH_ASSOC);
+  
+
+
     include_once("sidebar.php");
 
 
@@ -86,17 +88,22 @@
                             </div>
                         </div>
                         <div class="ibox-content">
+                            
                                    <form action="thematicsaver.php" method="post" enctype="multipart/form-data">
                                     <input name="title" class="form-control" type="text" placeholder="Text"/><br>
-                                    <select name="section" class="form-control" type="text">
-                                     <option disabled selected>--Select Section to Link With--</option>
+                                    <select name="section" class="form-control" >
+                                     <option disabled="disabled" selected="selected">--Select Section to Link With--</option>
                                      <?php
+                                          $sql="select * from sections;";
+                                          $result=$conn->query($sql);
+                                          $sections=$result->fetchAll(PDO::FETCH_ASSOC);
                                        foreach($sections as $index=>$section)
                                        {
+                                        //print $section['sectionTitle'];
                                         ?>
-                                           <option name="section" value=<?=$section['sectionID']?> >
+                                           <option  value=<?=$section['sectionID']?> >
                                            <?=$section['sectionTitle']?>
-                                       </option>
+                                           </option>
                                         <?php
                                        }
 

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -23,8 +24,18 @@
 <body class="no-skin-config">
 
     <div id="wrapper">
-  
-    <?php include_once("sidebar.php"); ?>
+   
+    <?php 
+    include_once("../Dbconnect.php");
+
+    $conn=(new Admin\Dbconnect)->connect();
+    $sql="select * from organisation ;";
+    $result=$conn->query($sql);
+    $details=$result->fetchAll(PDO::FETCH_ASSOC);
+    //print_r($details);
+    $details=$details[0];
+    include_once("sidebar.php"); 
+    ?>
     
         <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
@@ -51,39 +62,39 @@
                             </div>
                         </div>
                         <div class="ibox-content">
-                            <form method="get">
+                            <form method="post" action="updateorganisation.php">
          
                                 <div class="form-group  row"><label class="col-sm-2 col-form-label">E-mail</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="email" class="form-control" value="<?=$details['email']?>"></div>
                                 </div>
                                 <div class="form-group  row"><label class="col-sm-2 col-form-label">Phone number</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="phone" class="form-control" value="<?=$details['phone']?>"></div>
                                 </div>
                                 <div class="form-group  row"><label class="col-sm-2 col-form-label">Address</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="address" class="form-control" value="<?=$details['address']?>"></div>
                                 </div>
                                 <div class="form-group  row"><label class="col-sm-2 col-form-label">Facebook</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="facebook" class="form-control" value="<?=$details['facebook']?>"></div>
                                 </div>
                                 <div class="form-group  row"><label class="col-sm-2 col-form-label">Instagram</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="instagram" class="form-control" value="<?=$details['instagram']?>"></div>
                                 </div>
                                 <div class="form-group  row"><label class="col-sm-2 col-form-label">Youtube</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="youtube" class="form-control" value="<?=$details['youtube']?>"></div>
                                 </div>
                                 <div class="form-group  row"><label class="col-sm-2 col-form-label">Twitter</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="twitter" class="form-control" value="<?=$details['twitter']?>"></div>
                                 </div>
                                 <div class="form-group  row"><label class="col-sm-2 col-form-label">LinkedIn</label>
 
-                                <div class="col-sm-10"><input type="text" class="form-control"></div>
+                                <div class="col-sm-10"><input type="text" name="linkedin" class="form-control" value="<?=$details['linkedin']?>"></div>
                                 </div>
                                 <div class="form-group  row">
 

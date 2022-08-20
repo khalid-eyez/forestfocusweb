@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>update section</title>
+    <title>Module Carousel</title>
 
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <link href="../../font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -27,16 +28,17 @@
     <?php 
     //session_start();
     $_SESSION['module']=$_GET['module'];
- 
+    include_once("../Dbconnect.php");
     $module=base64_decode(urldecode($_GET['module']));
     //finding section images
-
+    $conn=(new Admin\Dbconnect)->connect();
+    $sql="select * from modulecarousel where moduleID=".$module.";";
+    $result=$conn->query($sql);
+    $images=$result->fetchAll(PDO::FETCH_ASSOC);
     include_once("../Dbconnect.php");
 
     $conn=(new Admin\Dbconnect)->connect();
-    $sql="select * from modules where modID=".$module.";";
-    $result=$conn->query($sql);
-    $image=$result->fetchAll(PDO::FETCH_ASSOC)[0];
+   
     include_once("sidebar.php");
 
 
@@ -50,7 +52,7 @@
         </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2><i class="fa fa-edit"></i> Update Section</h2>
+                    <h2><i class="fa fa-edit"></i> Module Carousel</h2>
                    
                 </div>
                 <div class="col-lg-2">
@@ -64,25 +66,34 @@
                 <div class="col-lg-12">
                     <div class="ibox">
                         <div class="ibox-title">
-                             Module Background
+                             Carousel Images
                             <div class="ibox-tools">
                                
                             </div>
                         </div>
                         <div class="ibox-content">
                         <form action="updatemod.php?module=<?=$_GET['module']?>" method="post" enctype="multipart/form-data">
-                              <div class="row">
-                    
-                                    
-                              
-                                   <div class="col-sm-12">
-                                   <img src="../../imgs/<?=$image['moduleimage']?>" class="img-thumbnail" style="max-height:450px;width:100%">
+                        <div class="row">
+                                  <?php
+                                 
+                                  foreach($images as $index=>$image)
+                                  {
+                                    $img=$image['image'];
+
+                                    ?>
+                                   <div class="col-sm-2">
+                                   <img src="../../imgs/<?=$img?>" class="img-thumbnail" height="100px";width="100%">
                                      
                                   </img>
-                                  
+                                  <i class="fa fa-trash delimg" id=<?=$image['imageID']?> style="position:absolute;right:10px"></i>
+                                  </div>
+                                    <?php
+                                  }
+
+                                   ?>
+                                </div>
                                    </div>
-                                   </div>
-                                    <input name="images[]" class="form-control" type="file"  accept="image/*" /><br>
+                                    <input name="images[]" class="form-control" type="file"  accept="image/*" multiple/><br>
                                
                                 <div class="form-group  row">
                                 <div class="col-sm-12"><button type="submit"  class="form-control  bg-primary" ><i class="fa fa-save"></i> Save Changes</button></div>
@@ -127,7 +138,7 @@
 
                  var id=$(this).attr('id');
                  var img=$(this);
-                 $.post("deletesectionimg.php", {id: id}, function(result){
+                 $.post("deletemodulecarouselimage.php", {id: id}, function(result){
                         
                        if(result=='true')
                        {

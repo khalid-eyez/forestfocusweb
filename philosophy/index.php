@@ -40,28 +40,10 @@
   $sections=$result2->fetchAll(PDO::FETCH_ASSOC);
   //print_r($sections);return true;
   ?>
-<div id="inSlider" class="carousel slide" data-ride="carousel" style="margin-top:146px" >
+<?php
+    include_once("philosophycarousel.php");
 
-    <div class="carousel-inner" role="listbox">
-   
-        <div class="carousel-item active">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>
-                      Philosophy | activities
-                    </h1>
-                </div>
-            </div>
-            <!-- Set background for slide in css -->
-         
-            <div class="header-back one" style="background: url('../imgs/<?=$module["moduleimage"]?>'),linear-gradient(rgba(0,0,0,0.3),rgba(50,100,0,0.2)) 50% 0 no-repeat;background-size:cover; background-blend-mode: overlay;"></div>
-
-        </div>
-    
-    
-    </div>
-
-</div>
+?>
 
 
 <?php

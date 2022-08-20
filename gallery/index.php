@@ -26,30 +26,11 @@
         $result=$conn->query($query);
         $images=$result->fetchAll(PDO::FETCH_ASSOC);
     ?>
-<div id="inSlider" class="carousel slide" data-ride="carousel" style="margin-top:146px" >
-<div class="carousel-inner" role="listbox">
-    <div class="carousel-item active">
-        <div class="container">
-            <div class="carousel-caption">
-                <h1>
-                    GALLERY
-                    </h1>
-                <p></p>
-                <p>
-                   
-                   
-                </p>
-            </div>
-            <div class="carousel-image wow zoomIn">
-                
-            </div>
-        </div>
-        <!-- Set background for slide in css -->
-        <div class="header-back one" style="background: url('../imgs/Home (2).jpg'),linear-gradient(rgba(0,0,0,0.3),rgba(50,100,0,0.2)) 50% 0 no-repeat;background-size:cover; background-blend-mode: overlay;"></div>
+   <?php
 
-    </div>
-    </div>
-</div></div>
+include_once("gallerycarousel.php");
+
+   ?>
 <div class="lightBoxGallery mt-4">
                         <?php
 

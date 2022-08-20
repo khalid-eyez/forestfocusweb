@@ -58,7 +58,7 @@
                             <p class="text-center">
                                 <i class="fa fa-recycle" style="color:rgba(13, 117, 30,.8);font-size:30px"></i>
                                 </p>
-                                <h3 class="text-center"><?=$area['title']?></h3>
+                                <h3 class="text-center"><?=htmlspecialchars(stripslashes($area['title']))?></h3>
                              
                             </div>
                         </div>
@@ -73,9 +73,9 @@
                         <div >
                             <div class="ibox-content" style="height:130px;overflow:hidden">
                             <p class="text-center">
-                                <i class="fas fa-water" style="color:rgba(13, 117, 30,.8);font-size:30px"></i>
+                                <i class="fa fa-tint" style="color:rgba(13, 117, 30,.8);font-size:30px"></i>
                                 </p>
-                                <h3 class="text-center"><?=$area['title']?></h3>
+                                <h3 class="text-center"><?=htmlspecialchars(stripslashes($area['title']))?></h3>
                              
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                             <p class="text-center">
                                 <i class="fa fa-tree" style="color:rgba(13, 117, 30,.8);font-size:30px"></i>
                                 </p>
-                                <h3 class="text-center"><?=$area['title']?></h3>
+                                <h3 class="text-center"><?=htmlspecialchars(stripslashes($area['title']))?></h3>
                              
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                             <p class="text-center">
                                 <i class="fa fa-money" style="color:rgba(13, 117, 30,.8);font-size:30px"></i>
                                 </p>
-                                <h3 class="text-center"><?=$area['title']?></h3>
+                                <h3 class="text-center"><?=htmlspecialchars(stripslashes($area['title']))?></h3>
                              
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                             <p class="text-center">
                                 <i class="fa fa-leaf" style="color:rgba(13, 117, 30,.8);font-size:30px"></i>
                                 </p>
-                                <h3 class="text-center"><?=$area['title']?></h3>
+                                <h3 class="text-center"><?=htmlspecialchars(stripslashes($area['title']))?></h3>
                              
                             </div>
                         </div>
@@ -147,7 +147,7 @@
                             <p class="text-center">
                                 <i class="fa fa-graduation-cap" style="color:rgba(13, 117, 30,.8);font-size:30px"></i>
                                 </p>
-                                <h3 class="text-center"><?=$area['title']?></h3>
+                                <h3 class="text-center"><?=htmlspecialchars(stripslashes($area['title']))?></h3>
                              
                             </div>
                         </div>
@@ -165,7 +165,7 @@
                             <p class="text-center">
                                 <i class="fa fa-briefcase" style="color:rgba(13, 117, 30,.8);font-size:30px"></i>
                                 </p>
-                                <h3 class="text-center"><?=$area['title']?></h3>
+                                <h3 class="text-center"><?=htmlspecialchars(stripslashes($area['title']))?></h3>
                              
                             </div>
                         </div>
@@ -214,8 +214,8 @@
             $text=(strlen($section['description'])<=163)?$section['description']:substr($section['description'],0,162);
             ?>
                  <div class="col-sm-4">
-                    <h3><?=ucwords($section['sectionTitle'])?></h3>
-                    <p><?=$text?>...</p>
+                    <h3 style="min-height:37px;max-height:37px;overflow:hidden"><?=ucwords(htmlspecialchars(stripslashes($section['sectionTitle'])))?></h3>
+                    <p style="min-height:100px;max-height:100px;overflow:hidden"><?=htmlspecialchars(stripslashes($text))?>...</p>
                     <p><a class="navy-link" href="projects/" role="button">Read More &raquo;</a></p>
                     <?php
                   
@@ -260,25 +260,27 @@
             <div class="card card-body bg-white">
                 <i class="fa fa-briefcase features-icon" style="color:rgba(13, 117, 30,.8);"></i>
                 <h2>Mission</h2>
-                <p><?=$profile['mission']?></p>
+                <p ><?=htmlspecialchars(stripslashes($profile['mission']))?></p>
             </div>
-            <div class="card card-body bg-white mt-2">
+            <div class="card card-body bg-white mt-2 ">
                 <i class="fa fa-line-chart features-icon" style="color:rgba(13, 117, 30,.8);"></i>
                 <h2>Vision</h2>
-                <p><?=$profile['vision']?></p>
-            </div>
-        </div>
-      
-        <div class="col-md-6 text-center wow fadeInRight">
-            <div class="card card-body bg-white">
-                <i class="fas fa-brain features-icon" style="color:rgba(13, 117, 30,.8);"></i>
-                <h2>Philosophy</h2>
-                <p><?=$profile['philosophy']?></p>
+                <p ><?=htmlspecialchars(stripslashes($profile['vision']))?></p>
             </div>
             <div class="card card-body bg-white mt-2 p-2" style="">
                 <i class="fa fa-eye features-icon" style="color:rgba(13, 117, 30,.8);"></i>
                 <h2>Target</h2>
-                <p><?=$profile['target']?></p>
+                <p ><?=htmlspecialchars(stripslashes($profile['target']))?></p>
+            </div>
+        </div>
+      
+        <div class="col-md-6 text-justify wow fadeInRight ">
+            <div class="card card-body bg-white rounded-pills" style="max-height:550px;min-height:535px; overflow:auto">
+                <span class="text-center">
+                <i class=" 	fa fa-snowflake-o features-icon" style="color:rgba(13, 117, 30,.8);"></i>
+                <h2>Philosophy</h2>
+        </span>
+                <p ><?=htmlspecialchars(stripslashes($profile['philosophy']))?></p>
             </div>
         </div>
         <a href="about/" class="btn btn-primary ml-3 mt-2">Read More <i class="fa fa-arrow-right"></i> </a>
@@ -307,7 +309,7 @@
             ?>
             <div class="col-sm-3">
                 <p><img src="imgs/<?=$achievement['image']?>" class="img-thumbnail" style="width:280px;height:150px"/></p>
-                <p><h3 class="ml-1"><?=ucwords($achievement['caption'])?></h3></p>
+                <p><h3 class="ml-1"><?=ucwords(htmlspecialchars(stripslashes($achievement['caption'])))?></h3></p>
                 
               
             </div>
@@ -326,40 +328,34 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Recent Activities & Events</h1>
+                <h1>Recent Blog Posts</h1>
             </div>
         </div>
         <div class="row features-block">
-            <div class="col-sm-3">
-                <p><img src="imgs/Home (14).jpg" class="img-thumbnail" style="width:280px;height:150px"/></p>
-                <h2>TREE GARDENS PREPARATION</h2>
-                <p>Plant to stop poverty is a massive tree planting project that intends to raise and plant eight million trees along North east coast of Tanzania and areas adjacent.</p>
-                <p><a class="navy-link" href="#" role="button">visit blog &raquo;</a></p>
-              
-            </div>
+            <?php
 
-            <div class="col-sm-3">
-                <p><img src="imgs/Food (2).jpg" class="img-thumbnail" style="width:280px;height:150px"/></p>
-                <h2>MUHEZA PEOPLE PARTICIPATING IN PSP PROJECT</h2>
-                <p>Plant to stop poverty is a massive tree planting project that intends to raise and plant eight million trees along North east coast of Tanzania and areas adjacent.</p>
-                <p><a class="navy-link" href="#" role="button">visit blog &raquo;</a></p>
-            </div>
+        include_once("admin/Dbconnect.php");
+        $conn=(new Admin\Dbconnect)->connect();
+        $queryb="select * from blog order by blogID desc limit 4";
+        $resultb=$conn->query($queryb);
+        $posts=$resultb->fetchAll(PDO::FETCH_ASSOC);
 
-            <div class="col-sm-3">
-                <p><img src="imgs/DJI_20220721_135932_803.jpg" class="img-thumbnail" style="width:280px;height:150px"/></p>
-                <h2>PSP A POTENTIAL PROJECT IN HANDENI</h2>
-                <p>Plant to stop poverty is a massive tree planting project that intends to raise and plant eight million trees along North east coast of Tanzania and areas adjacent.</p>
-                <p><a class="navy-link" href="#" role="button">visit blog &raquo;</a></p>
+        foreach($posts as $index=>$post)
+        {
+          ?>
+             <div class="col-sm-3">
+                <p><img src="imgs/<?=$post['image']?>" class="img-thumbnail" style="width:280px;height:150px"/></p>
+                <h2><?=htmlspecialchars(stripslashes($post['title']))?></h2>
+                <p class="text-justify"><?=htmlspecialchars(stripslashes($post['intro']))?></p>
+                <p><small><i class="fa fa-clock"></i> <?=date_format(date_create($post['time']),"d-m-Y H:i:s")?></small></p>
+                <p><a class="navy-link" href="viewpost.php?post=<?=urlencode(base64_encode($post['blogID']))?>" role="button">view post &raquo;</a></p>
             </div>
-            <div class="col-sm-3">
-                <p><img src="imgs/Welfair improvement (3).jpg" class="img-thumbnail" style="width:280px;height:150px"/></p>
-                <h2>WELFARE IMPROVEMENT PROGRAM IN HANDENI SCHOOLS</h2>
-                <p>Plant to stop poverty is a massive tree planting project that intends to raise and plant eight million trees along North east coast of Tanzania and areas adjacent.</p>
-                <p><a class="navy-link" href="#" role="button">visit blog &raquo;</a></p>
-            </div>
+          <?php
+        }
+    ?>
      
-
-            <a href="#" class="btn btn-primary float-right"><i class="fa fa-arrow-right"></i> Blog</a>
+    </div>
+            <a href="blog/" class="btn btn-primary"><i class="fa fa-arrow-right"></i> Blog</a>
 
         </div>
     </div>
